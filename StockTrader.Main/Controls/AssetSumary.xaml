@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="StockTrader.Main.Controls.AssetSumary"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StockTrader.Main.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="ColorCashAnimation">
+            <ColorAnimation From="Red"
+                                To="Black"
+                                Duration="0:0:0.5"
+                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                RepeatBehavior="Forever"
+                                AutoReverse="True"/>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       FontSize="26"
+                       Margin="10,30,10,10"
+                       FontFamily="Helvetica"
+                       FontWeight="DemiBold"
+                       HorizontalAlignment="Center"
+                       Text="Cash"
+                       FontStyle="Italic"
+                       Foreground="Black"/>
+
+            <TextBlock Grid.Row="1"
+                        Text="{Binding TopAssetSummaryViewModel.AccountBalance, UpdateSourceTrigger=PropertyChanged, 
+                        Mode=OneWay, StringFormat={}{0:C}, FallbackValue=$0.00}"
+                        Margin="10,10,10,0"
+                        FontStyle="Italic"
+                        Foreground="Red"
+                        FontFamily="Helvetica"
+                        FontWeight="DemiBold"
+                        FontSize="45">
+                <TextBlock.Triggers>
+                    <EventTrigger RoutedEvent="TextBlock.Loaded">
+                        <BeginStoryboard Storyboard="{StaticResource ColorCashAnimation}"/>
+                    </EventTrigger>
+                </TextBlock.Triggers>
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Margin="25,5,5,5"
+                       FontSize="14"
+                       Foreground="Black"
+                       FontWeight="ExtraBlack"
+                       Text="Top 3 Assets"/>
+
+            <local:AssetListing DataContext="{Binding TopAssetSummaryViewModel.AssetListingViewModel}"
+                                Margin="15"/>
+        </Grid>
+    </Grid>
+</UserControl>

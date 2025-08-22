@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/PlaceHolderTextBox.Control/bin/Debug/net8.0-windows
+/PlaceHolderTextBox.Control/obj
+/StockTrader.Domain/bin/Debug/net8.0-windows
+/StockTrader.Domain/obj
+/StockTrader.Domain.Tests/bin/Debug/net8.0-windows
+/StockTrader.Domain.Tests/obj
+/StockTrader.EntityFramework/bin/Debug/net8.0-windows
+/StockTrader.EntityFramework/obj
+/StockTrader.FinancialModelingAPI/bin/Debug/net8.0-windows
+/StockTrader.FinancialModelingAPI/obj
+/StockTrader.Main/.vs
+/StockTrader.Main/bin/Debug/net8.0-windows
+/StockTrader.Main/obj
+/StockTrader.Shared/bin/Debug/net8.0-windows
+/StockTrader.Shared/obj

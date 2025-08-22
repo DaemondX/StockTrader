@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrader.Main", "StockTrader.Main\StockTrader.Main.csproj", "{05318E7F-73B8-4ABF-ADAB-D3BB301A29A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrader.Shared", "StockTrader.Shared\StockTrader.Shared.csproj", "{8348C9F6-F88A-4C01-AF12-F401C364398B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrader.FinancialModelingAPI", "StockTrader.FinancialModelingAPI\StockTrader.FinancialModelingAPI.csproj", "{4322CA87-6B36-42B2-AA24-A7139662360A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrader.EntityFramework", "StockTrader.EntityFramework\StockTrader.EntityFramework.csproj", "{A0F88217-A834-4E49-A686-C4DB8B0CB340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrader.Domain.Tests", "StockTrader.Domain.Tests\StockTrader.Domain.Tests.csproj", "{0EB22421-B941-4E69-8D76-C01B1D1F71D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrader.Domain", "StockTrader.Domain\StockTrader.Domain.csproj", "{7D802084-684E-46E9-AF34-94339148D122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaceHolderTextBox.Control", "PlaceHolderTextBox.Control\PlaceHolderTextBox.Control.csproj", "{EF5CB325-07AA-4CBF-907E-5C6394EF20D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05318E7F-73B8-4ABF-ADAB-D3BB301A29A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05318E7F-73B8-4ABF-ADAB-D3BB301A29A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05318E7F-73B8-4ABF-ADAB-D3BB301A29A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05318E7F-73B8-4ABF-ADAB-D3BB301A29A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8348C9F6-F88A-4C01-AF12-F401C364398B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8348C9F6-F88A-4C01-AF12-F401C364398B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8348C9F6-F88A-4C01-AF12-F401C364398B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8348C9F6-F88A-4C01-AF12-F401C364398B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4322CA87-6B36-42B2-AA24-A7139662360A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4322CA87-6B36-42B2-AA24-A7139662360A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4322CA87-6B36-42B2-AA24-A7139662360A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4322CA87-6B36-42B2-AA24-A7139662360A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0F88217-A834-4E49-A686-C4DB8B0CB340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F88217-A834-4E49-A686-C4DB8B0CB340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F88217-A834-4E49-A686-C4DB8B0CB340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F88217-A834-4E49-A686-C4DB8B0CB340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EB22421-B941-4E69-8D76-C01B1D1F71D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EB22421-B941-4E69-8D76-C01B1D1F71D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EB22421-B941-4E69-8D76-C01B1D1F71D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EB22421-B941-4E69-8D76-C01B1D1F71D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D802084-684E-46E9-AF34-94339148D122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D802084-684E-46E9-AF34-94339148D122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D802084-684E-46E9-AF34-94339148D122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D802084-684E-46E9-AF34-94339148D122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF5CB325-07AA-4CBF-907E-5C6394EF20D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF5CB325-07AA-4CBF-907E-5C6394EF20D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF5CB325-07AA-4CBF-907E-5C6394EF20D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF5CB325-07AA-4CBF-907E-5C6394EF20D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C889C161-416C-4DF3-8FE2-5CB93FB4F285}
+	EndGlobalSection
+EndGlobal
