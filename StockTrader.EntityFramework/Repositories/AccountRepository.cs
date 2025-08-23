@@ -164,6 +164,30 @@ namespace StockTrader.EntityFramework.Repositories
             }
         }
 
+        public async Task<User?> GetByPCName(string pcName, int id)
+        {
+            using (var context = _contextFactory.CreateDbContext())
+            {
+                try
+                {
+                    // Eager Loading
+                    User? entity = await context.Users
+                        .FirstOrDefaultAsync(e => e.PCName == pcName && e.Id == id);
+
+                    if (entity != null)
+                    {
+                        return entity;
+                    }
+                    return null;
+                }
+                catch (Exception)
+                {
+                    // maybe log the exception- ...
+                    throw new Exception("An error occurred while searching an entity by PCName.");
+                }
+            }
+        }
+
         public async Task<Account?> UpdateAsync(int id, Account entity)
          => await _sharedRepository.UpdateAsync(id, entity);
     }

@@ -10,6 +10,7 @@ CREATE TABLE Users
     Username     NVARCHAR(50)  UNIQUE NOT NULL,
     Email        NVARCHAR(100) UNIQUE NOT NULL,
     PasswordHash NVARCHAR(256) NOT NULL,
+    PCName       NVARCHAR(100) NOT NULL,
     DateJoined   DATETIME      NOT NULL
 )
 GO

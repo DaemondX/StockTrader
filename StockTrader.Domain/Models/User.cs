@@ -7,6 +7,7 @@ namespace StockTrader.Domain.Models
         public string Username { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
+        public string PCName { get; set; }
         public DateTime DateJoined { get; set; } = DateTime.Now;
     }
 }

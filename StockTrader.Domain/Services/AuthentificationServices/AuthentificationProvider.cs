@@ -3,6 +3,7 @@ using StockTrader.Domain.Exceptions;
 using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.AuthentificationServices.Interfaces;
 using StockTrader.Domain.Services.Interfaces;
+using System.Management;
 
 namespace StockTrader.Domain.Services.AuthentificationServices
 {
@@ -31,9 +32,16 @@ namespace StockTrader.Domain.Services.AuthentificationServices
             // Get the account by the username
             Account? storedAccount = await _accountService.GetByUserName(username);
 
-            if(storedAccount == null)
+            if (storedAccount == null)
             {
                 throw new UserNotFoundException(username);
+            }
+
+            string currentPCName = GetCurrentPCName();
+
+            if (storedAccount.AccountHolder.PCName != currentPCName)
+            {
+                throw new DifferentPCNameException(username, currentPCName, storedAccount.AccountHolder.PCName);
             }
 
             // Verify the password
@@ -69,14 +77,14 @@ namespace StockTrader.Domain.Services.AuthentificationServices
             }
 
             // Check if the email, username and password are not null or empty
-            if (string.IsNullOrEmpty(email) || 
-                string.IsNullOrEmpty(username) || 
+            if (string.IsNullOrEmpty(email) ||
+                string.IsNullOrEmpty(username) ||
                 string.IsNullOrEmpty(password))
             {
                 return RegistrationResult.UsernameOrEmailOrPasswordIsEmpty;
             }
 
-            if(startingBalance < 0)
+            if (startingBalance < 0)
             {
                 return RegistrationResult.StartingBalanceMustBePositive;
             }
@@ -92,7 +100,7 @@ namespace StockTrader.Domain.Services.AuthentificationServices
             // Check if the UserName is already used
             Account? storedAccountByUserName = await _accountService.GetByUserName(username);
 
-            if(storedAccountByUserName != null)
+            if (storedAccountByUserName != null)
             {
                 return RegistrationResult.UsernameAlreadyExists;
             }
@@ -107,17 +115,38 @@ namespace StockTrader.Domain.Services.AuthentificationServices
                 {
                     Email = email,
                     Username = username,
+                    PCName = GetCurrentPCName(),
                     PasswordHash = passwordHash
                 },
 
                 Balance = startingBalance
             };
 
-             // Create the account
+            // Create the account
             await _accountService.CreateAsync(newAccount);
 
             // Return the success result
             return RegistrationResult.Success;
+        }
+
+        public string GetCurrentPCName()
+        {
+            try
+            {
+                // Query Win32_ComputerSystem for system information
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT Model FROM Win32_ComputerSystem");
+                string? systemModel = null;
+                foreach (ManagementObject managementObject in searcher.Get())
+                {
+                    // Retrieve the "Model" & "manufacturer" property
+                    systemModel = managementObject["Model"]?.ToString();
+                }
+                return Environment.MachineName + " " + $"{systemModel}";
+            }
+            catch (ManagementException ex)
+            {
+                throw new Exception($"An error occurred: {ex.Message}");
+            }
         }
     }
 }

@@ -7,5 +7,6 @@ namespace StockTrader.Domain.Services.Interfaces
     {
         Task<Account?> GetByEmail(string email);
         Task<Account?> GetByUserName(string username);
+        Task<User?> GetByPCName(string pcName, int id);
     }
 }
