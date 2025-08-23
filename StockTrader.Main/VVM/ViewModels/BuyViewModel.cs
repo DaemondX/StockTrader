@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Services.Interfaces;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="BuyViewModel.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the BuyViewModel class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the BuyViewModel class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Services.Interfaces;
 using StockTrader.Domain.Services.Interfaces.TransactionServices;
 using StockTrader.Main.Commands;
 using StockTrader.Main.State.Accounts;
@@ -111,6 +124,13 @@ namespace StockTrader.Main.VVM.ViewModels
         public bool CanSearchSymbol => 
             !string.IsNullOrEmpty(Symbol);
 
+        /// <summary>
+        /// BuyViewModel constructor
+        /// </summary>
+        /// <param name="stockPriceService"></param>
+        /// <param name="buyStockService"></param>
+        /// <param name="accountStore"></param>
+        /// <param name="assetStore"></param>
         public BuyViewModel(IStockPriceService stockPriceService,
             IBuyStockService buyStockService,
             IAccountStore accountStore,

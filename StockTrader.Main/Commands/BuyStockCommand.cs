@@ -1,9 +1,21 @@
-﻿using StockTrader.Domain.Models;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="BuyStockCommand.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the BuyStockCommand class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the BuyStockCommand class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.Interfaces.TransactionServices;
 using StockTrader.Main.State.Accounts;
 using StockTrader.Main.VVM.ViewModels;
 using System.ComponentModel;
-using System.Windows;
 
 namespace StockTrader.Main.Commands
 {
@@ -13,6 +25,12 @@ namespace StockTrader.Main.Commands
         private readonly IBuyStockService _buyStockService;
         private readonly IAccountStore _accountStore;
 
+        /// <summary>
+        /// BuyStockCommand constructor to initialize the services and view model
+        /// </summary>
+        /// <param name="buyViewModel"></param>
+        /// <param name="buyStockService"></param>
+        /// <param name="accountStore"></param>
         public BuyStockCommand(BuyViewModel buyViewModel, 
             IBuyStockService buyStockService,
             IAccountStore accountStore)
@@ -25,6 +43,11 @@ namespace StockTrader.Main.Commands
             _buyViewModel.PropertyChanged += OnPropertyViewModelChanged;
         }
 
+        /// <summary>
+        /// OnPropertyViewModelChanged method to handle the PropertyChanged event of the BuyViewModel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPropertyViewModelChanged(object? sender, PropertyChangedEventArgs e)
         {
            if(e.PropertyName == nameof(_buyViewModel.SharesToBuy) || 

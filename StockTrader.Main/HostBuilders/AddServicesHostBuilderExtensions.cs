@@ -1,4 +1,17 @@
-﻿using Microsoft.AspNet.Identity;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AddServicesHostBuilderExtensions.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AddServicesHostBuilderExtensions class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AddServicesHostBuilderExtensions class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.AspNet.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StockTrader.Common.Interfaces;
@@ -13,12 +26,13 @@ using StockTrader.FinancialModelingAPI.Services;
 
 namespace StockTrader.Main.HostBuilders
 {
-
-    /*
-                   *    **************       Services      **************** 
-    */
     public static class AddServicesHostBuilderExtensions
     {
+        /// <summary>
+        /// Add services to the host builder
+        /// </summary>
+        /// <param name="host"></param>
+        /// <returns></returns>
         public static IHostBuilder AddServices(this IHostBuilder host)
         {
             host.ConfigureServices((context, services) =>

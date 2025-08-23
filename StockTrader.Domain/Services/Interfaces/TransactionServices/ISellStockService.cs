@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Models;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="ISellStockService.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the ISellStockService class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the ISellStockService class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Models;
 using StockTrader.Domain.Exceptions;
 
 namespace StockTrader.Domain.Services.Interfaces.TransactionServices

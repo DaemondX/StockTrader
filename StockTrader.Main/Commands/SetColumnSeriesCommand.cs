@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Exceptions;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="SetColumnSeriesCommand.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the SetColumnSeriesCommand class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the SetColumnSeriesCommand class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Exceptions;
 using StockTrader.Main.State.Assets;
 using StockTrader.Main.VVM.ViewModels;
 
@@ -9,6 +22,11 @@ namespace StockTrader.Main.Commands
         private readonly PortfolioViewModel _portfolioViewModel;
         private readonly AssetStore _assetStore;
 
+        /// <summary>
+        /// Set column series command
+        /// </summary>
+        /// <param name="portfolioViewModel"></param>
+        /// <param name="assetStore"></param>
         public SetColumnSeriesCommand(PortfolioViewModel portfolioViewModel, AssetStore assetStore)
         {
             _portfolioViewModel = portfolioViewModel;

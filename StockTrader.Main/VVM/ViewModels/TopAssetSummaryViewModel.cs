@@ -1,4 +1,17 @@
-﻿using StockTrader.Main.State.Assets;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="TopAssetSummaryViewModel.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the TopAssetSummaryViewModel class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the TopAssetSummaryViewModel class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Main.State.Assets;
 
 namespace StockTrader.Main.VVM.ViewModels
 {
@@ -10,6 +23,10 @@ namespace StockTrader.Main.VVM.ViewModels
 
         public AssetListingViewModel AssetListingViewModel { get; }
 
+        /// <summary>
+        /// TopAssetSummaryViewModel constructor
+        /// </summary>
+        /// <param name="assetStore"></param>
         public TopAssetSummaryViewModel(AssetStore assetStore)
         {
             _assetStore = assetStore;

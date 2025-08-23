@@ -1,4 +1,17 @@
-﻿using Microsoft.AspNet.Identity;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AuthentificationProviderTests.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AuthentificationProviderTests class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AuthentificationProviderTests class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.AspNet.Identity;
 using Moq;
 using NUnit.Framework;
 using StockTrader.Domain.Exceptions;
@@ -16,6 +29,9 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
         private Mock<IPasswordHasher> _mockPasswordHasher;
         private AuthentificationProvider _authenticationProvider;
 
+        /// <summary>
+        /// Set up the test environment before each test
+        /// </summary>
         [SetUp]
         public void Setup()
         {
@@ -24,7 +40,10 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
             _authenticationProvider = new AuthentificationProvider(_mockAccountService.Object, _mockPasswordHasher.Object);
         }
 
-
+        /// <summary>
+        /// Login with correct password for existing username should return account for correct username
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task Login_WithCorrectPasswordForExistingUsername_ShouldReturnAccountForCorrectUsername()
         {
@@ -47,6 +66,9 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
             Assert.AreEqual(actualUsername, expectedUsername);
         }
 
+        /// <summary>
+        /// Login with incorrect password for existing username should throw InvalidPasswordException
+        /// </summary>
         [Test]
         public void Login_WithInCorrectPasswordForExistingUsername_ThrowsInvalidPasswordException()
         {
@@ -70,6 +92,10 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
             Assert.AreEqual(actualUsername, expectedUsername);
         }
 
+        /// <summary>
+        /// Login with non-existing username should throw UserNotFoundException
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task Login_WithNonExistingUsername_ThrowsUserNotFoundException()
         {
@@ -86,7 +112,10 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
             Assert.AreEqual(actualUsername, expectedUsername);
         }
 
-
+        /// <summary>
+        /// Register with non-matching passwords should return PasswordDoNotMatch
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task Register_WithNonMatchingPasswords_ReturnsPasswordDoNotMatch()
         {
@@ -102,6 +131,10 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
             Assert.AreEqual(expectedRegistrationResult, actualRegistrationResult);
         }
 
+        /// <summary>
+        /// Register with empty email or username or password should return UsernameOrEmailOrPasswordIsEmpty
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task Register_WithEmptyEmailOrUsernameOrPassword_ReturnsUsernameOrEmailOrPasswordIsEmpty()
         {
@@ -122,6 +155,10 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
             Assert.AreEqual(expectedRegistrationResultEmailOrPasswordOrUsername, actualRegistrationResultPasswordIsEmpty);
         }
 
+        /// <summary>
+        /// Register with email that already exists should return EmailAlreadyExists
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task Register_WithEmailAlreadyExists_ReturnsEmailAlreadyExists()
         {
@@ -142,6 +179,10 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
             Assert.AreEqual(expectedRegistrationResult, actualRegistrationResult);
         }
 
+        /// <summary>
+        /// Register with username that already exists should return UsernameAlreadyExists
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task Register_WithUsernameAlreadyExists_ReturnsUsernameAlreadyExists()
         {
@@ -162,6 +203,10 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
             Assert.AreEqual(expectedRegistrationResult, actualRegistrationResult);
         }
 
+        /// <summary>
+        /// Register with starting balance less than 0 should return StartingBalanceMustBePositive
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task Register_WithStartBalanceLessThan0_ReturnsStartBalanceMustBePositive()
         {
@@ -179,6 +224,10 @@ namespace StockTrader.Domain.Tests.Services.AuthentificationServices
             Assert.AreEqual(expectedRegistrationResult, actualRegistrationResult);
         }
 
+        /// <summary>
+        /// Register with new user and correct parameters should return Success
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task Register_WithNewUserAndCorrectParameters_ReturnsSuccess()
         {

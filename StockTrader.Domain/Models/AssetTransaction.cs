@@ -1,4 +1,17 @@
-﻿using StockTrader.Common.Models;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AssetTransaction.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AssetTransaction class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AssetTransaction class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Common.Models;
 
 namespace StockTrader.Domain.Models
 {

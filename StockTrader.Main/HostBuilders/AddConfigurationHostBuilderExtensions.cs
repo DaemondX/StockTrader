@@ -1,4 +1,17 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AddConfigurationHostBuilderExtensions.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AddConfigurationHostBuilderExtensions class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AddConfigurationHostBuilderExtensions class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace StockTrader.Main.HostBuilders
@@ -7,7 +20,6 @@ namespace StockTrader.Main.HostBuilders
     {
         /// <summary>
         /// Extension method to add the appsettings.json file and the environment variables to the configuration
-        /// 
         /// </summary>
         /// <param name="hostBuilder"></param>
         /// <returns></returns>

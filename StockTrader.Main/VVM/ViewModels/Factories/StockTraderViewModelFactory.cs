@@ -1,4 +1,17 @@
-﻿using StockTrader.Main.State.Navigators;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="StockTraderViewModelFactory.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the StockTraderViewModelFactory class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the StockTraderViewModelFactory class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Main.State.Navigators;
 
 namespace StockTrader.Main.VVM.ViewModels.Factories
 {
@@ -11,6 +24,14 @@ namespace StockTrader.Main.VVM.ViewModels.Factories
         private readonly CreateViewModel<BuyViewModel> _createByBuyViewModelDelegate;
         private readonly CreateViewModel<SellViewModel> _createBySellViewModelDelegate;
 
+        /// <summary>
+        /// StockTraderViewModelFactory constructor
+        /// </summary>
+        /// <param name="createByHomeViewModelDelegate"></param>
+        /// <param name="createByPortfolioViewModelDelegate"></param>
+        /// <param name="createLoginByViewModelDelegate"></param>
+        /// <param name="createByBuyViewModelDelegate"></param>
+        /// <param name="createBySellViewModel"></param>
         public StockTraderViewModelFactory(CreateViewModel<HomeViewModel> createByHomeViewModelDelegate, 
             CreateViewModel<PortfolioViewModel> createByPortfolioViewModelDelegate,
             CreateViewModel<LoginViewModel> createLoginByViewModelDelegate,

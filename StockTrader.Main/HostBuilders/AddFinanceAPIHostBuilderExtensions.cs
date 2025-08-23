@@ -1,4 +1,17 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AddFinanceAPIHostBuilderExtensions.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AddFinanceAPIHostBuilderExtensions class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AddFinanceAPIHostBuilderExtensions class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StockTrader.FinancialModelingAPI;
@@ -7,12 +20,14 @@ using System.Configuration;
 
 namespace StockTrader.Main.HostBuilders
 {
-
-    /*
-                      *    **************       Http      **************** 
-    */
     public static class AddFinanceAPIHostBuilderExtensions
     {
+        /// <summary>
+        /// Add the FinancialModelingHttpClient to the host builder
+        /// </summary>
+        /// <param name="host"></param>
+        /// <returns></returns>
+        /// <exception cref="ConfigurationErrorsException"></exception>
         public static IHostBuilder AddFinanceAPI(this IHostBuilder host)
         {
             host.ConfigureServices((context,services) =>

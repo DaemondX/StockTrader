@@ -1,4 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="SharedRepository.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the SharedRepository class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the SharedRepository class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using StockTrader.Common.Models;
 using StockTrader.EntityFramework.DbContexts;
@@ -10,6 +23,10 @@ namespace StockTrader.EntityFramework.Repositories.Common
         // DesignTimeStockTraderDbContextFactory instance
         private readonly StockTraderDbContextFactory _contextFactory;
 
+        /// <summary>
+        /// SharedRepository constructor
+        /// </summary>
+        /// <param name="contextFactory"></param>
         public SharedRepository(StockTraderDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
@@ -103,6 +120,13 @@ namespace StockTrader.EntityFramework.Repositories.Common
             }
         }
 
+        /// <summary>
+        /// UpdateAsync method that updates an entity in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<T?> UpdateAsync(int id, T entity)
         {
             using (var context = _contextFactory.CreateDbContext())

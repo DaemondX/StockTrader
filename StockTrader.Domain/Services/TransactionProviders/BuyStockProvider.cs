@@ -1,4 +1,17 @@
-﻿using StockTrader.Common.Interfaces;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="BuyStockProvider.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the BuyStockProvider class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the BuyStockProvider class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Common.Interfaces;
 using StockTrader.Domain.Exceptions;
 using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.Interfaces;
@@ -11,6 +24,11 @@ namespace StockTrader.Domain.Services.TransactionProviders
         private readonly IStockPriceService _stockPriceProvider;
         private readonly ICommonRepository<Account> _dataRepository;
 
+        /// <summary>
+        /// BuyStockProvider constructor
+        /// </summary>
+        /// <param name="stockPriceService"></param>
+        /// <param name="dataService"></param>
         public BuyStockProvider(IStockPriceService stockPriceService, 
             ICommonRepository<Account> dataService)
         {

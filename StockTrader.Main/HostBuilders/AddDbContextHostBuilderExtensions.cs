@@ -1,4 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AddDbContextHostBuilderExtensions.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AddDbContextHostBuilderExtensions class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AddDbContextHostBuilderExtensions class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -7,9 +20,6 @@ using System.Configuration;
 
 namespace StockTrader.Main.HostBuilders
 {
-    /*
-                    *    **************       DbContext      **************** 
-    */
     public static class AddDbContextHostBuilderExtensions
     {
         /// <summary>

@@ -1,4 +1,17 @@
-﻿using Microsoft.AspNet.Identity;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AuthentificationProvider.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AuthentificationProvider class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AuthentificationProvider class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.AspNet.Identity;
 using StockTrader.Domain.Exceptions;
 using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.AuthentificationServices.Interfaces;
@@ -14,6 +27,11 @@ namespace StockTrader.Domain.Services.AuthentificationServices
         // I use the PasswordHasher to hash the password before storing it in the database from ASP.NET Identity
         private readonly IPasswordHasher _passwordHasher;
 
+        /// <summary>
+        /// AuthentificationProvider constructor
+        /// </summary>
+        /// <param name="accountService"></param>
+        /// <param name="passwordHasher"></param>
         public AuthentificationProvider(IAccountService accountService, IPasswordHasher passwordHasher)
         {
             _accountService = accountService;
@@ -21,7 +39,7 @@ namespace StockTrader.Domain.Services.AuthentificationServices
         }
 
         /// <summary>
-        /// 
+        /// Login a user with username and password
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -59,7 +77,7 @@ namespace StockTrader.Domain.Services.AuthentificationServices
         }
 
         /// <summary>
-        /// 
+        /// Register a new user
         /// </summary>
         /// <param name="email"></param>
         /// <param name="username"></param>
@@ -129,6 +147,11 @@ namespace StockTrader.Domain.Services.AuthentificationServices
             return RegistrationResult.Success;
         }
 
+        /// <summary>
+        /// Get the current PC name and model
+        /// </summary>
+        /// <returns>string</returns>
+        /// <exception></exception>
         public string GetCurrentPCName()
         {
             try

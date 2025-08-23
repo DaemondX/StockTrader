@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Services.AuthentificationServices.Interfaces;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="RegisterCommand.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the RegisterCommand class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the RegisterCommand class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Services.AuthentificationServices.Interfaces;
 using StockTrader.Main.State.Authentificators;
 using StockTrader.Main.State.Navigators;
 using StockTrader.Main.VVM.ViewModels;
@@ -12,6 +25,12 @@ namespace StockTrader.Main.Commands
         private readonly IAuthenticator _authenticator;
         private readonly IRenavigator _loginRenavigator;
 
+        /// <summary>
+        /// RegisterCommand constructor
+        /// </summary>
+        /// <param name="registerViewModel"></param>
+        /// <param name="authenticator"></param>
+        /// <param name="loginRenavigator"></param>
         public RegisterCommand(RegisterViewModel registerViewModel, 
             IAuthenticator authenticator,
             IRenavigator loginRenavigator)
@@ -20,11 +39,14 @@ namespace StockTrader.Main.Commands
             _authenticator = authenticator;
             _loginRenavigator = loginRenavigator;
 
-
             _registerViewModel.PropertyChanged += OnPropertyViewModelChanged;
-
         }
 
+        /// <summary>
+        /// OnPropertyViewModelChanged method to handle the PropertyChanged event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPropertyViewModelChanged(object? sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName == nameof(_registerViewModel.Username) ||
@@ -37,12 +59,22 @@ namespace StockTrader.Main.Commands
             }
         }
 
+        /// <summary>
+        /// CanExecute method to determine if the command can be executed
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanExecute(object? parameter)
         {
             return _registerViewModel.CanTryRegister && 
                    base.CanExecute(parameter);  
         }
 
+        /// <summary>
+        /// ExecuteAsync method to execute the command asynchronously
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override async Task ExecuteAsync(object? parameter)
         {
             // Clear the error message
@@ -66,6 +98,11 @@ namespace StockTrader.Main.Commands
             }
         }
 
+        /// <summary>
+        /// ActionForRegistrationResult method to handle the result of the registration
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="registerRenavigator"></param>
         private void ActionForRegistrationResult(RegistrationResult result, IRenavigator registerRenavigator)
         {
             switch (result)

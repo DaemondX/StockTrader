@@ -1,4 +1,17 @@
-﻿using Moq;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="SellStockProviderTests.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the SellStockProviderTests class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the SellStockProviderTests class.
+//-----------------------------------------------------------------------*/
+
+using Moq;
 using NUnit.Framework;
 using StockTrader.Domain.Exceptions;
 using StockTrader.Domain.Models;
@@ -15,6 +28,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
         private Mock<IStockPriceService> _mockStockPriceService;
         private Mock<IAccountService> _mockAccountService;
 
+        /// <summary>
+        /// Set up the test environment before each test
+        /// </summary>
         [SetUp]
         public void Setup()
         {
@@ -24,6 +40,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             _sellStockService = new SellStockProvider(_mockAccountService.Object, _mockStockPriceService.Object);
         }
 
+        /// <summary>
+        /// SellStock with null seller should throw ArgumentNullException
+        /// </summary>
         [Test]
         public void SellStock_WithNullSeller_ThrowsArgumentNullException()
         {
@@ -41,6 +60,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             StringAssert.Contains(expectedExceptionMessage, nullReferenceException.Message);
         }
 
+        /// <summary>
+        /// SellStock with null or empty stock symbol should throw ArgumentNullException
+        /// </summary>
         [Test]
         public void SellStock_WithNullOrEmptyStockSymbol_ThrowsArgumentNullException()
         {
@@ -62,6 +84,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             StringAssert.Contains(expectedExceptionMessage, nullReferenceException.Message);
         }
 
+        /// <summary>
+        /// SellStock with shares less than or equal to zero should throw ArgumentOutOfRangeException
+        /// </summary>
         [Test]
         public void SellStock_WithInsufficientShares_ThrowsInsufficientSharesException()
         {
@@ -80,6 +105,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             Assert.AreEqual(sharesForSell, insufficientSharesException.RequiredShares);
         }
 
+        /// <summary>
+        /// SellStock with invalid stock symbol should throw InvalidSymbolException
+        /// </summary>
         [Test]
         public void SellStock_WithInvalidSymbol_ThrowsInvalidSymbolException()
         {
@@ -99,6 +127,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             Assert.AreEqual(expectedSymbol, invalidSymbolException.Symbol);
         }
 
+        /// <summary>
+        /// SellStock with GetPrice failure should throw Exception
+        /// </summary>
         [Test]
         public void SellStock_WithGetPriceFailure_ThrowsException()
         {
@@ -112,6 +143,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
                 _sellStockService.SellStockAsync(seller, "MSFT", 1));
         }
 
+        /// <summary>
+        /// SellStock with account update failure should throw Exception
+        /// </summary>
         [Test]
         public void SellStock_WithAccountUpdateFailure_ThrowsException()
         {
@@ -128,6 +162,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
                 _sellStockService.SellStockAsync(seller, "MSFT", 1));
         }
 
+        /// <summary>
+        /// SellStock with valid inputs should return updated account
+        /// </summary>
         [Test]
         public void SellStock_WithSuccess_ReturnsUpdatedAccount()
         {
@@ -149,6 +186,14 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             Assert.AreEqual(expectedTrancationCount, updatedAccount.AssetTransactions.Count);
         }
 
+        /// <summary>
+        /// Create a test account with given parameters
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="shares"></param>
+        /// <param name="balance"></param>
+        /// <param name="isPurchase"></param>
+        /// <returns></returns>
         private static Account CreateTestAccount(string symbol, int shares, double balance, bool isPurchase)
         {
             return new Account

@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Exceptions;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="SellStockProvider.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the SellStockProvider class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the SellStockProvider class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Exceptions;
 using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.Interfaces;
 using StockTrader.Domain.Services.Interfaces.TransactionServices;
@@ -10,13 +23,18 @@ namespace StockTrader.Domain.Services.TransactionProviders
         private readonly IStockPriceService _stockPriceService;
         private readonly IAccountService _accountService;
 
+        /// <summary>
+        /// SellStockProvider constructor
+        /// </summary>
+        /// <param name="accountService"></param>
+        /// <param name="stockPriceService"></param>
         public SellStockProvider(IAccountService accountService, IStockPriceService stockPriceService)
         {
             _accountService = accountService;
             _stockPriceService = stockPriceService;
         }
         /// <summary>
-        /// 
+        /// Sell stock for the given account
         /// </summary>
         /// <param name="seller"></param>
         /// <param name="symbol"></param>

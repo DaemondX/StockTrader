@@ -1,4 +1,17 @@
-﻿using System.Windows;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="PlaceHolderTextBox.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the PlaceHolderTextBox class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the PlaceHolderTextBox class.
+//-----------------------------------------------------------------------*/
+
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PlaceHolderTextBox.Control

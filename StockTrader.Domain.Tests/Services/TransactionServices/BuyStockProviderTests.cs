@@ -1,4 +1,17 @@
-﻿using Moq;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="BuyStockProviderTests.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the BuyStockProviderTests class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the BuyStockProviderTests class.
+//-----------------------------------------------------------------------*/
+
+using Moq;
 using NUnit.Framework;
 using StockTrader.Common.Interfaces;
 using StockTrader.Domain.Exceptions;
@@ -15,7 +28,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
         private Mock<ICommonRepository<Account>> _mockAccountRepository;
         private BuyStockProvider _buyStockProvider;
 
-
+        /// <summary>
+        /// Set up the test environment before each test
+        /// </summary>
         [SetUp] 
         public void SetUp() 
         {
@@ -24,6 +39,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             _buyStockProvider = new BuyStockProvider(_mockStockPriceService.Object, _mockAccountRepository.Object);
         }
 
+        /// <summary>
+        /// BuyStock should throw ArgumentNullException when buyer is null
+        /// </summary>
         [Test]
         public void BuyStock_WithNullBuyer_ThrowsArgumentNullException()
         {
@@ -41,7 +59,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             StringAssert.Contains(expectedExceptionMessage, actualException.Message);
         }
 
-
+        /// <summary>
+        /// BuyStock should throw ArgumentNullException when stock is null
+        /// </summary>
         [Test]
         public void BuyStock_WithNullStock_ThrowsArgumentNullException()
         {
@@ -64,6 +84,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             StringAssert.Contains(expectedExceptionMessage, actualException.Message);
         }
 
+        /// <summary>
+        /// ByStock should throw ArgumentOutOfRangeException when shares is less than 1
+        /// </summary>
         [Test]
         public void BuyStock_WithSharesLessThan1_ThrowsArgumentOutOfRangeException()
         {
@@ -89,6 +112,9 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             StringAssert.Contains(expectedExceptionMessage, actualException.Message);
         }
 
+        /// <summary>
+        /// BuyStock should throw InsufficientBalanceOfMoney when the result balance is less than 1
+        /// </summary>
         [Test]
         public void BuyStock_WithResultBalanceLessThan1_ThrowsInsufficientBalanceOfMoney()
         {
@@ -120,6 +146,10 @@ namespace StockTrader.Domain.Tests.Services.TransactionServices
             StringAssert.Contains(expectedExceptionMessage, actualException.Message);
         }
 
+        /// <summary>
+        /// BuyStock should return the buyer when the parameters are correct
+        /// </summary>
+        /// <returns></returns>
         [Test]
         public async Task BuyStock_WithCorrectParameters_ReturnBuyer()
         {

@@ -1,4 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="StockTraderDesignTimeDbContextFactory.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the StockTraderDesignTimeDbContextFactory class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the StockTraderDesignTimeDbContextFactory class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
@@ -7,6 +20,12 @@ namespace StockTrader.EntityFramework.DbContexts
 {
     public class StockTraderDesignTimeDbContextFactory : IDesignTimeDbContextFactory<StockTraderDbContext>
     {
+        /// <summary>
+        /// Create a new instance of StockTraderDbContext for design-time services
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public StockTraderDbContext CreateDbContext(string[] args)
         {
             // Get configuration from the appsettings.json file

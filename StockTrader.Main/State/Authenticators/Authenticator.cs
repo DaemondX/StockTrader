@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Models;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="Authenticator.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the Authenticator class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the Authenticator class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.AuthentificationServices.Interfaces;
 using StockTrader.Main.State.Accounts;
 using StockTrader.Main.State.Authentificators;
@@ -12,12 +25,20 @@ namespace StockTrader.Main.State.Authenticators
         // Store the one current account for whole application
         private readonly IAccountStore _accountStore;
 
+        /// <summary>
+        /// Authenticator constructor
+        /// </summary>
+        /// <param name="authentificationService"></param>
+        /// <param name="accountStore"></param>
         public Authenticator(IAuthenticationServices authentificationService, IAccountStore accountStore)
         {
             _authentificationService = authentificationService;
             _accountStore = accountStore;
         }
 
+        /// <summary>
+        /// Current logged in account
+        /// </summary>
         public Account? CurrentAccount
         {
             get => _accountStore.CurrentAccount;
@@ -30,11 +51,17 @@ namespace StockTrader.Main.State.Authenticators
             }
         }
 
+        /// <summary>
+        /// OnStateChanged method to notify the subscribers that the state has changed
+        /// </summary>
         private void OnStateChanged()
         {
             StateChanged?.Invoke();
         }
 
+        /// <summary>
+        /// Indicate whether the user is logged in or not
+        /// </summary>
         public bool IsLoggedIn
             => CurrentAccount != null;
 
@@ -53,6 +80,9 @@ namespace StockTrader.Main.State.Authenticators
             CurrentAccount = await _authentificationService.Login(username, password);
         }
 
+        /// <summary>
+        /// Logout the current user
+        /// </summary>
         public void Logout()
          => CurrentAccount = null;
 

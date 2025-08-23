@@ -1,4 +1,16 @@
-﻿using Microsoft.Extensions.Logging;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AssetStore.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AssetStore class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AssetStore class.
+//-----------------------------------------------------------------------*/
+
 using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.Interfaces;
 using StockTrader.Main.State.Accounts;
@@ -12,15 +24,20 @@ namespace StockTrader.Main.State.Assets
         private readonly IStockPriceService _stockPriceService;
 
         // AccountBalance property
-        public double AccountBalance 
+        public double AccountBalance
             => _accountStore.CurrentAccount?.Balance ?? 0;
 
         // AssetTransactions property
-        public IEnumerable<AssetTransaction> AssetTransactions 
+        public IEnumerable<AssetTransaction> AssetTransactions
             => _accountStore.CurrentAccount?.AssetTransactions ?? new List<AssetTransaction>();
 
         public event Action StateChanged;
 
+        /// <summary>
+        /// AssetStore constructor
+        /// </summary>
+        /// <param name="accountStore"></param>
+        /// <param name="stockPriceService"></param>
         public AssetStore(IAccountStore accountStore, IStockPriceService stockPriceService)
         {
             _accountStore = accountStore;
@@ -29,6 +46,9 @@ namespace StockTrader.Main.State.Assets
             _accountStore.StateChanged += OnStateChanged;
         }
 
+        /// <summary>
+        /// OnStateChanged method to invoke the StateChanged event
+        /// </summary>
         private void OnStateChanged()
         {
             StateChanged?.Invoke();
@@ -70,7 +90,7 @@ namespace StockTrader.Main.State.Assets
                      PricePerShare = await _stockPriceService.GetPriceAsync(g.Key)
                  }));
 
-            return takeCount == -1 ? assetViewModelAccordingByMoney.OrderByDescending(s => s.AssetValue) 
+            return takeCount == -1 ? assetViewModelAccordingByMoney.OrderByDescending(s => s.AssetValue)
                                    : assetViewModelAccordingByMoney.OrderByDescending(s => s.AssetValue).Take(takeCount);
         }
 
@@ -85,8 +105,8 @@ namespace StockTrader.Main.State.Assets
                    .Where(g => g.Key == symbol)
                    .Select(g => new AssetViewModel()
                    {
-                        Symbol = g.Key,
-                        Shares = g.Sum(a => a.IsPurchase ? a.SharesAmount : -a.SharesAmount)
+                       Symbol = g.Key,
+                       Shares = g.Sum(a => a.IsPurchase ? a.SharesAmount : -a.SharesAmount)
                    })
                    .Sum(s => s.Shares);
         }

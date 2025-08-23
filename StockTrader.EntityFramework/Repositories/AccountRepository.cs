@@ -1,4 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AccountRepository.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AccountRepository class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AccountRepository class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.EntityFrameworkCore;
 using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.Interfaces;
 using StockTrader.EntityFramework.DbContexts;
@@ -14,6 +27,10 @@ namespace StockTrader.EntityFramework.Repositories
         // SharedRepository instance
         private readonly SharedRepository<Account> _sharedRepository;
 
+        /// <summary>
+        /// AccountRepository constructor that initializes the context factory and shared repository
+        /// </summary>
+        /// <param name="contextFactory"></param>
         public AccountRepository(StockTraderDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;
@@ -108,6 +125,13 @@ namespace StockTrader.EntityFramework.Repositories
                 }
             }
         }
+
+        /// <summary>
+        /// Get an account by email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<Account?> GetByEmail(string email)
         {
             using (var context = _contextFactory.CreateDbContext())
@@ -136,6 +160,12 @@ namespace StockTrader.EntityFramework.Repositories
             }
         }
 
+        /// <summary>
+        /// Get an account by username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<Account?> GetByUserName(string username)
         {
             using (var context = _contextFactory.CreateDbContext())
@@ -164,6 +194,13 @@ namespace StockTrader.EntityFramework.Repositories
             }
         }
 
+        /// <summary>
+        /// Get a user by PC name and id
+        /// </summary>
+        /// <param name="pcName"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<User?> GetByPCName(string pcName, int id)
         {
             using (var context = _contextFactory.CreateDbContext())
@@ -188,6 +225,12 @@ namespace StockTrader.EntityFramework.Repositories
             }
         }
 
+        /// <summary>
+        /// UpdateAsync method that updates an entity in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public async Task<Account?> UpdateAsync(int id, Account entity)
          => await _sharedRepository.UpdateAsync(id, entity);
     }

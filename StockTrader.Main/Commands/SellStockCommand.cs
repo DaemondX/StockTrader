@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Exceptions;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="SellStockCommand.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the SellStockCommand class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the SellStockCommand class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Exceptions;
 using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.Interfaces.TransactionServices;
 using StockTrader.Main.State.Accounts;
@@ -13,6 +26,12 @@ namespace StockTrader.Main.Commands
         private readonly ISellStockService _sellStockService;
         private readonly IAccountStore _accountStore;
 
+        /// <summary>
+        /// SellStockCommand constructor
+        /// </summary>
+        /// <param name="sellViewModel"></param>
+        /// <param name="sellStockService"></param>
+        /// <param name="accountStore"></param>
         public SellStockCommand(SellViewModel sellViewModel, 
             ISellStockService sellStockService,
             IAccountStore accountStore)
@@ -25,6 +44,11 @@ namespace StockTrader.Main.Commands
             _sellViewModel.PropertyChanged += OnPropertyViewModelChanged;
         }
 
+        /// <summary>
+        /// OnPropertyViewModelChanged method to handle the PropertyChanged event of the BuyViewModel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnPropertyViewModelChanged(object? sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName == nameof(_sellViewModel.CanSellStock))
@@ -33,9 +57,20 @@ namespace StockTrader.Main.Commands
             }
         }
 
+        /// <summary>
+        /// CanExecute method to determine if the command can be executed
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanExecute(object? parameter)
             => _sellViewModel.CanSellStock &&
                base.CanExecute(parameter);
+
+        /// <summary>
+        /// ExecuteAsync method to execute the command asynchronously
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public async override Task ExecuteAsync(object? parameter)
         {
             string sellSymbolToUpper = _sellViewModel.Symbol.ToUpper();

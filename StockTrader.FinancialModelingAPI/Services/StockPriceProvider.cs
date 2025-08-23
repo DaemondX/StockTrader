@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Exceptions;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="StockPriceProvider.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the StockPriceProvider class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the StockPriceProvider class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Exceptions;
 using StockTrader.Domain.Services.Interfaces;
 using StockTrader.FinancialModelingAPI.Results;
 

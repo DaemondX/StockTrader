@@ -1,4 +1,17 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="AddViewModelsHostBuilderExtensions.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the AddViewModelsHostBuilderExtensions class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the AddViewModelsHostBuilderExtensions class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StockTrader.Domain.Services.Interfaces;
 using StockTrader.Domain.Services.Interfaces.TransactionServices;
@@ -11,12 +24,13 @@ using StockTrader.Main.VVM.ViewModels.Factories;
 
 namespace StockTrader.Main.HostBuilders
 {
-
-    /*
-                     *    **************       View Models      **************** 
-    */
     public static class AddViewModelsHostBuilderExtensions
     {
+        /// <summary>
+        /// Add the ViewModels to the HostBuilder
+        /// </summary>
+        /// <param name="host"></param>
+        /// <returns></returns>
         public static IHostBuilder AddViewModels(this IHostBuilder host)
         {
             host.ConfigureServices(services =>

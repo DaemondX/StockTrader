@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Exceptions;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="SearchSymbolCommand.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the SearchSymbolCommand class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the SearchSymbolCommand class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Exceptions;
 using StockTrader.Domain.Services.Interfaces;
 using StockTrader.Main.State.Assets;
 using StockTrader.Main.VVM.ViewModels;
@@ -12,6 +25,12 @@ namespace StockTrader.Main.Commands
         private readonly ISearchSymbolViewModel _viewModel;
         private readonly IStockPriceService _stockPriceService;
 
+        /// <summary>
+        /// Search for a stock symbol and update the ViewModel with the price and shares owned
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <param name="stockPriceService"></param>
+        /// <param name="assetStore"></param>
         public SearchSymbolCommand(ISearchSymbolViewModel viewModel, 
                                    IStockPriceService stockPriceService,
                                    AssetStore assetStore)
@@ -23,6 +42,11 @@ namespace StockTrader.Main.Commands
             _viewModel.PropertyChanged += ViewModel_PropertyChanged;
         }
 
+        /// <summary>
+        /// ViewModel property changed event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ViewModel_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName == nameof(_viewModel.CanSearchSymbol))
@@ -31,6 +55,11 @@ namespace StockTrader.Main.Commands
             }
         }
 
+        /// <summary>
+        /// Can execute if the ViewModel allows searching and the base can execute
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override bool CanExecute(object? parameter)
         {
             return _viewModel.CanSearchSymbol &&
@@ -38,7 +67,11 @@ namespace StockTrader.Main.Commands
         }
 
 
-        // 
+        /// <summary>
+        /// Execute the search for the stock symbol asynchronously
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         public override async Task ExecuteAsync(object? parameter)
         {
             string symbolToUpper = _viewModel.Symbol.ToUpper();

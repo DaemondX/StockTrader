@@ -1,4 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="FinancialModelingHttpClient.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the FinancialModelingHttpClient class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the FinancialModelingHttpClient class.
+//-----------------------------------------------------------------------*/
+
+using Newtonsoft.Json;
 using StockTrader.FinancialModelingAPI.Models;
 using System.IO;
 using System.Net;
@@ -13,6 +26,11 @@ namespace StockTrader.FinancialModelingAPI
         // HTTP client to make the requests
         private readonly HttpClient _httpClient;
 
+        /// <summary>
+        /// Financial modeling HTTP client constructor
+        /// </summary>
+        /// <param name="httpClient"></param>
+        /// <param name="apiKey"></param>
         public FinancialModelingHttpClient(HttpClient httpClient, FinancialModelingAPIKey apiKey)
         {
             _httpClient = httpClient;

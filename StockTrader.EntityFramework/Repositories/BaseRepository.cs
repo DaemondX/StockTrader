@@ -1,4 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="BaseRepository.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the BaseRepository class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the BaseRepository class.
+//-----------------------------------------------------------------------*/
+
+using Microsoft.EntityFrameworkCore;
 using StockTrader.Common.Interfaces;
 using StockTrader.Common.Models;
 using StockTrader.EntityFramework.DbContexts;
@@ -17,6 +30,10 @@ namespace StockTrader.EntityFramework.Repositories
         // SharedRepository instance
         private readonly SharedRepository<T> _sharedRepository;
 
+        /// <summary>
+        /// BaseRepository constructor that takes a DesignTimeStockTraderDbContextFactory instance
+        /// </summary>
+        /// <param name="contextFactory"></param>
         public BaseRepository(StockTraderDbContextFactory contextFactory)
         {
             _contextFactory = contextFactory;

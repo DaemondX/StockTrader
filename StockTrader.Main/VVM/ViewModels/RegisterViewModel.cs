@@ -1,4 +1,17 @@
-﻿using StockTrader.Main.Commands;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="RegisterViewModel.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the RegisterViewModel class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the RegisterViewModel class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Main.Commands;
 using StockTrader.Main.State.Authentificators;
 using StockTrader.Main.State.Navigators;
 using System.Collections;
@@ -93,6 +106,9 @@ namespace StockTrader.Main.VVM.ViewModels
             }
         }
 
+        /// <summary>
+        /// Can the user try to register
+        /// </summary>
         public bool CanTryRegister
         {
             get
@@ -139,6 +155,7 @@ namespace StockTrader.Main.VVM.ViewModels
         }
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
+        // Invoke the event
         private void OnErrorsChanged(string propertyName)
         {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
@@ -162,6 +179,7 @@ namespace StockTrader.Main.VVM.ViewModels
             }
         }
 
+        // Remove all errors from the property
         private void RemoveErrors(string propertyName)
         {
             _propertiesErrorsMessages.Remove(propertyName);
@@ -181,6 +199,11 @@ namespace StockTrader.Main.VVM.ViewModels
         public bool HasErrors => 
             _propertiesErrorsMessages.Any();
 
+        /// <summary>
+        /// RegisterViewModel constructor
+        /// </summary>
+        /// <param name="loginNavigator"></param>
+        /// <param name="authenticator"></param>
         public RegisterViewModel(IRenavigator loginNavigator, 
                                  IAuthenticator authenticator)
         {

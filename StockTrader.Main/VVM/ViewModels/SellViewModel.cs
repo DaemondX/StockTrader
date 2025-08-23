@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Services.Interfaces;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="SellViewModel.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the SellViewModel class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the SellViewModel class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Services.Interfaces;
 using StockTrader.Domain.Services.Interfaces.TransactionServices;
 using StockTrader.Main.Commands;
 using StockTrader.Main.State.Accounts;
@@ -18,7 +31,6 @@ namespace StockTrader.Main.VVM.ViewModels
                 _selectedAsset = value;
                 OnPropertyChanged(nameof(SelectedAsset));
                 OnPropertyChanged(nameof(Symbol));
-                
             }
         }
 
@@ -128,7 +140,13 @@ namespace StockTrader.Main.VVM.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// SellViewModel constructor
+        /// </summary>
+        /// <param name="assetStore"></param>
+        /// <param name="stockPriceService"></param>
+        /// <param name="sellStockService"></param>
+        /// <param name="accountStore"></param>
         public SellViewModel(AssetStore assetStore, 
                              IStockPriceService stockPriceService, 
                              ISellStockService sellStockService, 

@@ -1,4 +1,17 @@
-﻿using StockTrader.Domain.Models;
+﻿/*-----------------------------------------------------------------------
+// <copyright file="MajorIndexProvider.cs">
+//     Copyright (c) 2025 by Man Tran. All rights reserved.
+// </copyright>
+// <summary>
+//     This file contains the definition of the MajorIndexProvider class, 
+//     which provides functionality for data processing.
+// </summary>
+// History:
+// Date         Author             Description
+// 2025-08-22   Man Tran           Created the MajorIndexProvider class.
+//-----------------------------------------------------------------------*/
+
+using StockTrader.Domain.Models;
 using StockTrader.Domain.Services.Interfaces;
 
 namespace StockTrader.FinancialModelingAPI.Services
@@ -9,7 +22,11 @@ namespace StockTrader.FinancialModelingAPI.Services
         private const string _majorIndexURIGlobal = "majors-indexes/";
         // FinancialModelingHttpClient to create the HttpClient
         private readonly FinancialModelingHttpClient _financialModelingHttpClient;
-         
+
+        /// <summary>
+        /// MajorIndexProvider constructor
+        /// </summary>
+        /// <param name="financialModelingHttpClient"></param>
         public MajorIndexProvider(FinancialModelingHttpClient financialModelingHttpClient)
         {
             _financialModelingHttpClient = financialModelingHttpClient;
